@@ -1,0 +1,49 @@
+<section class="main">
+    <!-- all the child section goes here -->
+    <!-- Top Section -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    COVID-19 TRACKER
+                </h1>
+                <h2 class="subtitle">
+                    An Angular Project Built On BULMA
+                </h2>
+                <h2 class="subtitle">
+                  <a href="https://www.linkedin.com/in/rituraj-anand-345a8a27/">A Project by Rituraj Anand </a>
+                </h2>
+                <div class="last-update" *ngIf="rituraj">
+                  <h3 class="title is-4">Last Updated <p style="color: rgb(40, 167, 69); font-weight: 600;">
+                      {{rituraj[0].lastupdatedtime}}</p>
+                  </h3>
+                  <!-- <h6 style="color: rgb(40, 167, 69); font-weight: 600;">06 Apr, 11:26 IST</h6> -->
+                </div>
+            </div>
+
+        </div>
+        <!-- Top Section -->
+    </section>
+    <!-- Card Section -->
+    <app-card></app-card>
+    <!-- Card Section -->
+    <section class="hero">
+        <!-- Search BAR -->
+        <div class="hero-body">
+            <div class="container">
+                <app-search></app-search>
+            </div>
+        </div>
+        <!-- Search BAR -->
+    </section>
+    <section class="hero">
+        <!-- Column Sections -->
+        <div class="hero-body">
+            <div class="container">
+               <app-table></app-table>
+            </div>
+        </div>
+        <!-- Column Sections -->
+    </section>
+    <!-- all the child section goes here -->
+</section>

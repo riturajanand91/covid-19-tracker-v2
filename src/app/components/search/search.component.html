@@ -1,0 +1,28 @@
+<div>
+  <nav class="panel">
+    <p class="panel-heading">
+      Search Your City,State etc.
+    </p>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+          <select class="input" (change)="getSelectedState($event.target.value)"
+          (click)="getSelectedStateData()">
+            <option *ngFor= "let s of result" value={{s.state}}>
+              {{s.state}}
+            </option>
+          </select>
+        <span class="icon is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+    <a class="panel-block is-active" *ngIf="result">
+      <span class="panel-icon">
+        <i class="fas fa-book" aria-hidden="true"></i>
+      </span>
+      <button *ngIf="state" class="button is-primary is-right"[routerLink]="['/state',$key]">
+        {{state}}
+      </button>
+    </a>
+  </nav>
+</div>

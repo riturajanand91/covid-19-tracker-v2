@@ -1,0 +1,38 @@
+<section class="hero">
+    <div class="hero-body">
+        <div class="container" *ngIf="carddata">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-danger">
+                      <p class="subtitle">CONFIRMED</p>
+                        <p class="title">{{carddata[0].confirmed}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-info">
+                        <p class="subtitle">ACTIVE</p>
+                        <p class="title">{{carddata[0].active}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-light">
+                        <p class="subtitle">DEATHS</p>
+                        <p class="title">{{carddata[0].deaths}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-success">
+                        <p class="subtitle">RECOVERED</p>
+                        <p class="title">{{carddata[0].recovered}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-warning">
+                        <p class="subtitle">TESTED</p>
+                        <p class="title">{{testeddata[86].totalsamplestested}}</p>
+                    </article>
+                </div>
+            </div>
+          </div>
+        </div>
+</section>

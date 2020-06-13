@@ -1,0 +1,20 @@
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" Align="">
+  <thead>
+    <tr>
+     <th>State</th>
+      <th>Confirmed</th>
+      <th>Active</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let api of result">
+      <td>{{api.state}}</td>
+      <td>{{api.confirmed}}</td>
+      <td>{{api.active}}</td>
+      <td>{{api.deaths}}</td>
+      <td>{{api.recovered}}</td>
+    </tr>
+  </tbody>
+</table>
