@@ -37,13 +37,27 @@
         <!-- Search BAR -->
     </section>
     <section class="hero">
-        <!-- Column Sections -->
-        <div class="hero-body">
-            <div class="container">
-               <app-table></app-table>
-            </div>
-        </div>
-        <!-- Column Sections -->
-    </section>
+      <!-- Column Sections -->
+      <div class="hero-body">
+          <!-- <div class="container"> -->
+              <div class="columns">
+                  <!-- Column Left -->
+                  <div class="column">
+                    <h1 class="title">Statewise Data</h1>
+                      <app-table></app-table>
+                  </div>
+                  <!-- Column Left -->
+                  <!-- Column Right -->
+                  <div class="column">
+                    <h1 class="title">Corona Spread Trend</h1>
+                    <app-chart></app-chart>
+                  </div>
+                  <!-- Column Right -->
+              </div>
+          <!-- </div> -->
+      </div>
+      <!-- Column Sections -->
+  </section>
+
     <!-- all the child section goes here -->
 </section>

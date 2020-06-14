@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  result: any
+  result: [];
   state: any;
   public $key;
   tempvar; //currently usused
@@ -18,6 +18,9 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.covid.getStateWiseData().subscribe((data) => {
       this.result = data['statewise'];
+      this.result.shift()
+      // console.log(this.result);
+
     })
   }
   getSelectedStateData() {

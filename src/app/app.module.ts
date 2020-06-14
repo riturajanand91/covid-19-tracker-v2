@@ -13,7 +13,8 @@ import { AboutComponent } from './components/about/about.component';
 import { TableComponent } from './components/table/table.component';
 import { SearchComponent } from './components/search/search.component';
 import { StateSingleComponent } from './components/state-single/state-single.component';
-
+import { ChartComponent } from './components/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,15 @@ import { StateSingleComponent } from './components/state-single/state-single.com
     AboutComponent,
     TableComponent,
     SearchComponent,
-    StateSingleComponent
+    StateSingleComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OrderModule
+    OrderModule,
+    ChartsModule
   ],
   providers: [CovidService],
   bootstrap: [AppComponent]

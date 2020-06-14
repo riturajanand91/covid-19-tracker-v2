@@ -1,85 +1,72 @@
-import { CovidService } from 'src/app/services/covid.service';
+import { CovidService } from './../../services/covid.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
-
 @Component({
-  selector: 'app-state-single',
-  templateUrl: './state-single.component.html',
-  styleUrls: ['./state-single.component.scss']
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.scss']
 })
-export class StateSingleComponent implements OnInit {
-  // Global Vars/
-  id; result; table; cardData;
-  districtArray = [];
+export class ChartComponent implements OnInit {
+  chartData;
+  testeddata;
+  stateArray = [];
   confirmedArray = [];
   activeArray = [];
   recoveredArray = [];
   deceasedArray = [];
-  constructor(
-    private actRoute: ActivatedRoute,
-    private covidService: CovidService
-  ) { }
+  testedArray = [];
+  testedArray2 = [];
+  constructor(private coviddata: CovidService) { }
 
   ngOnInit() {
-    const sub = this.actRoute.params.subscribe((params) => {
-      this.id = params['id'];
-      this.getTData();
-    });
-    this.getDisttData();
-  }
+    this.coviddata.getTableData().subscribe((data) => {
+      this.chartData = data['statewise'];
+      this.testeddata = data['tested'];
 
-  getTData() {
-    this.covidService.getTableData().subscribe((data) => {
-      this.result = data['statewise'];
-      for (let i = 1; i <= 37; i++) {
-        var r = data['statewise'][i];
-        if (this.id == r['state']) {
-          this.cardData = r;
-        }
-      }
-    });
-  }
-
-  getDisttData() {
-    this.covidService.getDistrictWiseData().subscribe((data) => {
-      var res: [];
-      for (let i = 1; i <= 36; i++) {
-        res = data[i];
-        if (this.id == res['state']) {
-          this.table = res['districtData'];
-        }
-      }
-      // console.log(this.table);
-      for (let i of this.table) {
-        this.districtArray.push(i['district']);
+      for (let i of this.chartData) {
+        this.stateArray.push(i['state']);
         this.confirmedArray.push(i['confirmed']);
         this.activeArray.push(i['active']);
         this.recoveredArray.push(i['recovered']);
-        this.deceasedArray.push(i['deceased']);
+        this.deceasedArray.push(i['deaths']);
         // this.testedArray.push(i['active']);
       }
-      // console.log(this.districtArray);
+      for (let i of this.testeddata) {
+        this.testedArray.push(i['totalsamplestested']);
+        this.testedArray2.push(i['updatetimestamp']);
+
+      }
+      this.stateArray.shift()
+      this.confirmedArray.shift()
+      this.activeArray.shift()
+      this.recoveredArray.shift()
+      this.deceasedArray.shift()
+
     });
   }
 
-  // line charts here
+  // ngoninit ends
 
-  ///Confirmed ++ Active
+///Confirmed ++ Active
   lineChartData: ChartDataSets[] = [
     { data: this.confirmedArray, label: 'Confirmed Cases' },
     { data: this.activeArray, label: 'Active Cases' }
   ];
 
-  ///Recovered ++ Deceased
+///Recovered ++ Deceased
   lineChartData2: ChartDataSets[] = [
     { data: this.recoveredArray, label: 'Recovered Cases' },
     { data: this.deceasedArray, label: 'Deceased Cases' }
   ];
 
+  lineChartData3: ChartDataSets[] = [
+    { data: this.testedArray, label: 'Total Tested Cases' },
+    // { data: this.testeddata, label: 'Positive Tested Cases' }
+  ];
 
-  lineChartLabels: Label[] = this.districtArray;
+  lineChartLabels: Label[] = this.stateArray;
+  lineChartLabels2: Label[] = this.testedArray2;
 
   lineChartOptions = {
     responsive: true,
@@ -111,5 +98,4 @@ export class StateSingleComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  // line charts here
 }
