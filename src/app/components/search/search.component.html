@@ -4,17 +4,18 @@
       Search Your City,State etc.
     </p>
     <div class="panel-block">
-      <p class="control has-icons-left">
+      <!-- <p class="control"> -->
           <select class="input" (change)="getSelectedState($event.target.value)"
           (click)="getSelectedStateData()">
+          <option value="Select">Select Your City/State</option>
             <option *ngFor= "let s of result" value={{s.state}}>
               {{s.state}}
             </option>
           </select>
-        <span class="icon is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span>
-      </p>
+        <!-- <span class="icon is-left">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span> -->
+      <!-- </p> -->
     </div>
     <a class="panel-block is-active" *ngIf="result">
       <span class="panel-icon">

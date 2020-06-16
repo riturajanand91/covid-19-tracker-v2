@@ -51,16 +51,16 @@ export class StateSingleComponent implements OnInit {
           this.table = res['districtData'];
         }
       }
-      // console.log(this.table);
+
       for (let i of this.table) {
         this.districtArray.push(i['district']);
         this.confirmedArray.push(i['confirmed']);
         this.activeArray.push(i['active']);
         this.recoveredArray.push(i['recovered']);
         this.deceasedArray.push(i['deceased']);
-        // this.testedArray.push(i['active']);
       }
-      // console.log(this.districtArray);
+     console.log(this.districtArray);
+
     });
   }
 

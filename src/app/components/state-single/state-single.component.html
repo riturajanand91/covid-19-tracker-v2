@@ -15,7 +15,38 @@
     <!-- Top Section -->
   </section>
   <!-- Card Section -->
-  <app-card></app-card>
+  <section class="hero">
+    <div class="hero-body">
+        <div class="container" *ngIf="cardData">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-danger">
+                      <p class="subtitle">CONFIRMED</p>
+                        <p class="title">{{cardData.confirmed}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-info">
+                        <p class="subtitle">ACTIVE</p>
+                        <p class="title">{{cardData.active}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-light">
+                        <p class="subtitle">DEATHS</p>
+                        <p class="title">{{cardData.deaths}}</p>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child box notification is-success">
+                        <p class="subtitle">RECOVERED</p>
+                        <p class="title">{{cardData.recovered}}</p>
+                    </article>
+                </div>
+            </div>
+          </div>
+        </div>
+</section>
   <!-- Card Section -->
   <section class="hero">
     <!-- Column Sections -->
@@ -24,6 +55,7 @@
         <div class="columns">
           <!-- Column Left -->
           <div class="column">
+
             <h1 class="title">Districtwise Data</h1>
             <table
               class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
@@ -88,3 +120,16 @@
   </section>
   <!-- all the child section goes here -->
 </section>
+<div class="chart-wrapper">
+  <canvas
+    baseChart width="400" height="300"
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [colors]="lineChartColors"
+    [legend]="lineChartLegend"
+    [chartType]="lineChartType"
+    [plugins]="lineChartPlugins"
+  >
+  </canvas>
+</div>

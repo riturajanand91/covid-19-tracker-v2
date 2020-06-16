@@ -15,6 +15,7 @@ import { SearchComponent } from './components/search/search.component';
 import { StateSingleComponent } from './components/state-single/state-single.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+// import { MapChartComponent } from './components/map-chart/map-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,16 @@ import { ChartsModule } from 'ng2-charts';
     TableComponent,
     SearchComponent,
     StateSingleComponent,
-    ChartComponent
+    ChartComponent,
+    // MapChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     OrderModule,
-    ChartsModule
+    ChartsModule,
+    // GoogleChart
   ],
   providers: [CovidService],
   bootstrap: [AppComponent]
